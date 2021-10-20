@@ -81,7 +81,7 @@ if __name__ == "__main__":
             #log(rotation, color, letter)
             rx,ry,rz = map(rad2floordeg, rotation)
             r, g, b, a = map(lambda v: int(v*255), color)
-            filename = dir / f'{letter}-{r}-{g}-{b}-{rx}-{ry}-{rz}.png'
+            filename = dir / letter / f'{r}-{g}-{b}-{rx}-{ry}-{rz}.png'
             obj.data.body = letter
             log(f"Renderizando '{str(filename)}'...")
             #log(rx, ry, rz)
