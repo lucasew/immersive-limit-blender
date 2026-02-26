@@ -1,0 +1,23 @@
+[tools]
+"github:lucasew/workspaced" = "0.1.5"
+
+[tasks.lint]
+run = "workspaced codebase lint"
+
+[tasks.fmt]
+run = "workspaced codebase format"
+
+[tasks.test]
+# Project uses Blender Python API, which requires Blender environment.
+# Tests are skipped in CI environment where Blender is not available.
+run = "echo 'Tests skipped: require Blender environment'"
+
+[tasks.codegen]
+run = "echo 'No codegen'"
+
+[tasks.install]
+# No external dependencies detected (bpy/mathutils are built-in to Blender)
+run = "echo 'No dependencies to install'"
+
+[tasks.ci]
+depends = ["lint", "test"]
