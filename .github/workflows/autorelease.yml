@@ -8,6 +8,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  MISE_VERBOSE: 1
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   autorelease:
     runs-on: ubuntu-latest
@@ -20,6 +24,9 @@ jobs:
           fetch-depth: 0
 
       - uses: jdx/mise-action@v2
+
+      - name: Debug mise
+        run: mise ls
 
       - name: Install
         run: mise run install
@@ -48,8 +55,6 @@ jobs:
 
       - name: Release
         if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create ${{ github.ref_name }} --generate-notes || true
 

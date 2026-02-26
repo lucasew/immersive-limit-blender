@@ -1,5 +1,5 @@
 [tools]
-"github:lucasew/workspaced" = "latest"
+"github:lucasew/workspaced" = "0.1.5"
 
 [tasks.lint]
 run = "workspaced codebase lint"
