@@ -1,5 +1,5 @@
 [tools]
-# workspaced = "latest" # Tool source unknown, assuming available in environment or manually installed
+"github:lucasew/workspaced" = "latest"
 
 [tasks.lint]
 run = "workspaced codebase lint"
